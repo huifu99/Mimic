@@ -21,14 +21,14 @@ Official PyTorch implementation for the paper:
 ## **TODO**
 - Release codes and weights
 - Release 3D-HDTF
-
+<!-- 
 ## **Environment**
 - Linux
 - Python 3.9
 - Pytorch 1.13.1
-- CUDA 11.6 (GPU with at least 24GB VRAM)
+- CUDA 11.6 (GPU with at least 24GB VRAM) -->
 
-Other necessary packages:
+<!-- Other necessary packages:
 ```
 pip install -r requirements.txt
 ```
@@ -39,7 +39,7 @@ pip install -r requirements.txt
 We heavily borrow the code from
 [CodeTalker](https://github.com/Doubiiu/CodeTalker) and
 [VOCA](https://github.com/TimoBolkart/voca). Thanks
-for sharing their code. Third-party packages are owned by their respective authors and must be used under their respective licenses.
+for sharing their code. Our 3D-HDTF dataset is based on [HDTF](https://github.com/MRzzm/HDTF). Third-party packages are owned by their respective authors and must be used under their respective licenses. -->
 
 ## **Citation**
 
