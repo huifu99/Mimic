@@ -19,27 +19,84 @@ Official PyTorch implementation for the paper:
 </p>
 
 ## **TODO**
-- Release codes and weights
-- Release 3D-HDTF
-<!-- 
-## **Environment**
-- Linux
-- Python 3.9
-- Pytorch 1.13.1
-- CUDA 11.6 (GPU with at least 24GB VRAM) -->
+- ~~Release codes and weights for inference.~~
+- Release 3D-HDTF dataset.
+- Release codes for training.
 
-<!-- Other necessary packages:
+## **Environment**
+- Ubuntu
+- RTX 4090
+- CUDA 11.6 (GPU with at least 24GB VRAM)
+- Python 3.9
+ ## **Dependencies**
+- PyTorch 1.13.1
+- ffmpeg
+- [PyTorch3D](https://github.com/facebookresearch/pytorch3d/blob/main/INSTALL.md) (recommend) or [MPI-IS/mesh](https://github.com/MPI-IS/mesh) for rendering
+
+Other necessary packages:
 ```
 pip install -r requirements.txt
 ```
-- ffmpeg
-- [MPI-IS/mesh](https://github.com/MPI-IS/mesh)
+
+ ## **Demo**
+ We provide some demos for 3D-HDTF. Please follow the process to run the demos.
+
+ 1) Prepare data and pretrained models
+    
+    Clone the repository using: `git clone https://github.com/huifu99/Mimic.git` .
+
+    Download the 3D-HDTF [data](https://drive.google.com/drive/folders/1s9FQQRAA_tqf58ThmWq3EWmFnV7syhhl?usp=drive_link) for demos and [model](https://drive.google.com/drive/folders/122oSYMiwQyzg8kvfWhp6A-JejMZGCNM8?usp=drive_link) trained using 3D-HDTF. Then put them to the root directory of Mimic.
+
+    Prepare the [SPECTRE model trained on HDTF](https://drive.google.com/drive/folders/18YM4J4u5Tpi-JLQLh-_UwDUwSPoVZBb1?usp=drive_link) and [dependencies](https://drive.google.com/drive/folders/197z4B8GYZ9QFwzGFXBkIZtddHESlgg1K?usp=drive_link)  of SPECTRE and put it to `external/spectre/`.
+    Organize the files into the following structure:
+    ```
+      Mimic
+      │
+      └─── demos
+         │
+         └─── wav
+         │
+         └─── style_ref
+      │
+      └─── pretrained
+         │
+         └───<experiment name>
+            │
+            └─── Epoch_x.pth
+      │
+      └─── external
+         │
+         └───spectre
+            │
+            └─── data
+            │
+            └─── pretrained
+               │
+               └─── HDTF_pretrained
+            │
+            └─── ...
+      │
+      └─── ...
+    ```
+
+ 2) Run demos
+    
+    Run the following command to get the demo results (.npy file for vertices and .mp4 for videos) in `demos/results`:
+
+    ```
+    python demo.py --wav_file demos/wav/RD_Radio11_001.wav --style_ref id_002-RD_Radio11_001
+    ```
+
+    Your can change the parameters such as `--wav_file` and `--style_ref` according to your path. The process of generating style reference file will be provided soon.
+
+ ## **Training and evaluation**
+
 
 ## **Acknowledgement**
 We heavily borrow the code from
-[CodeTalker](https://github.com/Doubiiu/CodeTalker) and
-[VOCA](https://github.com/TimoBolkart/voca). Thanks
-for sharing their code. Our 3D-HDTF dataset is based on [HDTF](https://github.com/MRzzm/HDTF). Third-party packages are owned by their respective authors and must be used under their respective licenses. -->
+[CodeTalker](https://github.com/Doubiiu/CodeTalker),
+[VOCA](https://github.com/TimoBolkart/voca) and [SPECTRE](https://github.com/filby89/spectre). Thanks
+for sharing their code. Our 3D-HDTF dataset is based on [HDTF](https://github.com/MRzzm/HDTF). Third-party packages are owned by their respective authors and must be used under their respective licenses.
 
 ## **Citation**
 
