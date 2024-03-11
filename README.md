@@ -53,28 +53,21 @@ pip install -r requirements.txt
       Mimic
       │
       └─── demos
-         │
          └─── wav
-         │
          └─── style_ref
       │
       └─── pretrained
-         │
          └───<experiment name>
-            │
             └─── Epoch_x.pth
       │
       └─── external
-         │
          └───spectre
-            │
             └─── data
-            │
             └─── pretrained
-               │
                └─── HDTF_pretrained
-            │
             └─── ...
+      │
+      └─── models
       │
       └─── ...
     ```
