@@ -1,6 +1,6 @@
 DATA:
   dataset: HDTF
-  data_root: 3D-HDTF  # your data root of 3D-HDTF
+  data_root: ./3D-HDTF  # your data root of 3D-HDTF
   audio_path: audio_16000Hz_from_video
   text_path: sentencestext
   codedict_path: spectre_processed_25fps_16kHz
@@ -59,12 +59,12 @@ NETWORK:
 TRAIN:
   output: ./experiments
   exp_name: exp-AR-dim128-align_conv-IN-style_cls-grl-clip_loss-cycle_style_content-style_SALN
-  batch_size: 5
+  batch_size: 6
   base_lr: 0.0001
   lr_sch_gamma: 0.1
   lr_sch_epoch: # 30
   start_epoch: 0
-  epochs: 1000
+  epochs: 150
   save_freq: 5
   print_freq: 100
   visual_tsne: True

@@ -82,8 +82,18 @@ pip install -r requirements.txt
 
     Your can change the parameters such as `--wav_file` and `--style_ref` according to your path. The process of generating style reference file will be provided soon.
 
- ## **Training and evaluation**
+ ## **Training and Evaluation**
+ ### 3D-HDTF
+  1) Data Preparation
 
+      Download our processed [3D-HDTF](https://pan.baidu.com/s/1ReX25BlG27mEcm4hKDUObw?pwd=HDTF) (extraction code: HDTF) data and put it in `./3D-HDTF` or your own directory.
+
+  2) Training
+
+      - Modify your data path (or other settings) in the config file: `./config/HDTF/config.yaml`. (optional)
+      - Run the train script: `python train.py --config ./config/HDTF/config.yaml`
+
+  3) Evaluation
 
 ## **Acknowledgement**
 We heavily borrow the code from
