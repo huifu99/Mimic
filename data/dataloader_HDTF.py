@@ -1,5 +1,5 @@
 import os
-os.environ['TRANSFORMERS_OFFLINE'] = '1'
+# os.environ['TRANSFORMERS_OFFLINE'] = '1'
 import torch
 import numpy as np
 import pickle

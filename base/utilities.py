@@ -21,7 +21,7 @@ def yaml2json(yaml_dir):
 
 def get_parser():
     parser = argparse.ArgumentParser(description=' ')
-    parser.add_argument('--config', type=str, default='./config/HDTF/stage1_disent.yaml', help='config file')
+    parser.add_argument('--config', type=str, default='./config/HDTF/config.yaml', help='config file')
     parser.add_argument('opts', help=' ', default=None,
                         nargs=argparse.REMAINDER)
     args = parser.parse_args()

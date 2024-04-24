@@ -1,0 +1,113 @@
+DATA:
+  dataset: HDTF
+  data_root: 3D-HDTF  # your data root of 3D-HDTF
+  audio_path: audio_16000Hz_from_video
+  text_path: sentencestext
+  codedict_path: spectre_processed_25fps_16kHz
+  video_list_file: video_list_id_framenum-train_test.txt
+  template_file: templates.pkl
+  FLAME_templates: FLAME_templates/FLAME_sample.ply
+  FLAME_template_HDTF: FLAME_HDTF_sample.npy
+  landmark_embedding: external/spectre/data/landmark_embedding.npy
+  lip_verts: FLAME_Regions/lve.txt
+  id_num_all: 220 # 220
+  train_ids: 150 # 150/220
+  val_ids: 10
+  val_video_list: video_list_id_framenum-val.txt
+  video_fps: 25
+  audio_fps: 50
+  vocab_size: 32
+
+  sentence_num: 40 # 50
+  window: 150
+  clip_overlap: True
+  num_workers: 4
+
+NETWORK:
+  motion_dim: 15069
+  feature_dim: 128
+  num_conv_layers: 5
+  hidden_size: 128
+  nhead_encoder: 4
+  dim_feedforward: 256
+  encoder_layers: 4
+  style_pooling: 'mean'  # mean/max
+  style_pretrain:
+  freeze_style_encoder: False
+  content_norm: 'IN'  # LN/IN
+  content_attention: True
+  wav2vec2model: facebook/wav2vec2-base-960h
+  audio_hidden_size: 768
+  freeze_TCN: True
+  freeze_audio_encoder: False
+  audio_feature_align: 'conv' # interpolation/conv
+  style_fuse: 'SALN' # add/cat/adain/SALN
+
+  decoder:
+    nhead: 4
+    dim_feedforward: 256
+    num_layers: 1
+
+  decoder_NAR:
+    max_seq_len: 600
+    decoder_layers: 4
+    decoder_hidden: 64
+    decoder_head: 4
+    fft_conv1d_filter_size: 1024
+    fft_conv1d_kernel_size: [9, 1]
+
+TRAIN:
+  output: ./experiments
+  exp_name: exp-AR-dim128-align_conv-IN-style_cls-grl-clip_loss-cycle_style_content-style_SALN
+  batch_size: 5
+  base_lr: 0.0001
+  lr_sch_gamma: 0.1
+  lr_sch_epoch: # 30
+  start_epoch: 0
+  epochs: 1000
+  save_freq: 5
+  print_freq: 100
+  visual_tsne: True
+  with_val: True
+  val_epoch: 5
+  continue_ckpt: 
+
+LOSS:
+  recon_loss: 
+    use: True
+    w: 1
+  content_code_sim_loss: 
+    use: False
+    w: 1.0e-6
+  content_contrastive_loss:
+    use: False
+    w: 1.0e-5
+    margin: 1.0
+  content_clip_loss:
+    use: True
+    w: 5.0e-7
+  content_ctc_loss:
+    use: False
+    w: 1.0e-8
+  content_grl_loss:
+    use: True
+    use_grl: True
+    w: 5.0e-7
+    alpha: 1.0
+    w_decay: 20 # 40
+  style_class_loss:
+    use: True
+    use_metrics: False
+    w: 2.5e-7 # 1.0e-6/1.0e-7/5.0e-7
+  content_class_loss:
+    use: False
+    w: 1.0e-7
+  style_cycle_loss:
+    use: True
+    sim: 'cos' # cos/L1
+    w: 2.0e-5 # 1.0e-4
+  content_cycle_loss:
+    use: True
+    w: 5.0e-6 # 5.0e-6/1.0e-5
+
+DEMO:
