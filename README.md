@@ -20,8 +20,8 @@ Official PyTorch implementation for the paper:
 
 ## **TODO**
 - ~~Release codes and weights for inference.~~
-- Release 3D-HDTF dataset.
-- Release codes for training.
+- ~~Release 3D-HDTF dataset.~~
+- ~~Release codes for training.~~
 
 ## **Environment**
 - Ubuntu
